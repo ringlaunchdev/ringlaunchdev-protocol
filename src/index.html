@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ringlaunch — a Solana loop for holders</title>
+<meta name="description" content="Ringlaunch is a Solana launchpad with one idea: tokens debut, trading feeds a reward stream, and keepers get served first.">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" sizes="32x32">
+<link rel="stylesheet" href="./app.css">
+<script src="./app.js" defer></script>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<div class="shell">
+
+<aside class="side" aria-label="Site">
+  <a class="side-brand" href="#top" aria-label="Ringlaunch home">
+    <img data-brand-logo src="./assets/ring-96.png" width="34" height="34" alt="">
+    <span class="word">RINGLAUNCH</span>
+  </a>
+  <nav class="side-nav" aria-label="Sections">
+    <p class="grp">Explore</p>
+    <a href="#top">Overview</a>
+    <a href="#market">Market desk</a>
+    <a href="#loop">The loop</a>
+    <a href="#roadmap">Roadmap</a>
+    <p class="grp">Follow</p>
+    <a data-social="x">X</a>
+    <a data-social="github">GitHub</a>
+  </nav>
+  <div class="side-cta">
+    <a class="btn btn-primary" href="#market">Open the desk</a>
+    <button class="btn btn-ghost" type="button" data-ca-action disabled>Contract pending</button>
+  </div>
+</aside>
+
+<div class="col">
+<header class="top">
+  <div class="top-row">
+    <a class="brand-m" href="#top" aria-label="Ringlaunch home">
+      <img src="./assets/ring-96.png" width="32" height="32" alt="">
+      <span class="word">RINGLAUNCH</span>
+    </a>
+    <span class="pill pill-top" data-pill-host data-state="sync"><i class="dot"></i><span data-pill-label>Syncing</span></span>
+    <nav class="social" aria-label="Social">
+      <a class="soc" data-social="x" aria-disabled="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a class="soc" data-social="github" aria-disabled="true">
+        <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+      </a>
+    </nav>
+  </div>
+  <div class="ca" data-ca data-state="absent" data-ca-exempt aria-disabled="true">
+    <span class="ca-k">CA</span>
+    <span class="ca-v" data-ca-text>Contract address not announced yet</span>
+    <span class="ca-act"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg><span data-ca-feedback aria-live="polite">Copy</span></span>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <canvas id="mesh" aria-hidden="true"></canvas>
+  <svg class="wave" aria-hidden="true" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 90c50-45 100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M0 140c50-45 100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0s100-45 150 0s100 45 150 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  <div class="hero-in">
+    <div class="hero-copy" data-depth="0.35">
+      <p class="eyebrow"><span class="pill" data-pill-host data-state="sync"><i class="dot"></i><span data-pill-label>Syncing</span></span><span class="chain">Solana mainnet</span></p>
+      <h1 class="display">A loop that<br><span class="acc">rewards the ones who stay.</span></h1>
+      <p class="lead" data-copy>Ringlaunch is a Solana launchpad with one idea: a token debuts, trading feeds a reward stream, and whoever keeps their tokens gets served first.</p>
+      <div class="hero-cta">
+        <a class="btn-pill" href="#market">Open the desk</a>
+        <a class="btn-pill ghost" href="#loop">Trace the loop</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="halo" data-depth="0.6"></div>
+      <div class="ring-wrap" data-depth="1"><img class="ring" src="./assets/ring-1024.png" width="520" height="520" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="tape" aria-label="Live prices ticker">
+  <div class="tape-track skeleton" id="tape"><div class="tape-seq"><span class="ti sk-t"></span><span class="ti sk-t"></span><span class="ti sk-t"></span><span class="ti sk-t"></span><span class="ti sk-t"></span><span class="ti sk-t"></span></div></div>
+</section>
+
+<section id="market" class="board" data-reveal>
+  <div class="board-head">
+    <div class="tabs" role="tablist" aria-label="Board order">
+      <button class="tab on" role="tab" aria-selected="true" data-tab="boost" type="button">Boosted</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="gain" type="button">Gainers</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="vol" type="button">Volume</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="liq" type="button">Depth</button>
+    </div>
+    <span class="board-meta"><span class="pill" data-pill-host data-state="sync"><i class="dot"></i><span data-pill-label>Syncing</span></span><span id="board-count" class="count">—</span></span>
+  </div>
+  <div class="chips" role="group" aria-label="Board filter">
+    <button class="chip on" type="button" data-pill="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-pill="up" aria-pressed="false">Green</button>
+    <button class="chip" type="button" data-pill="down" aria-pressed="false">Red</button>
+    <button class="chip" type="button" data-pill="deep" aria-pressed="false">Deep pools</button>
+  </div>
+  <p class="board-note" data-copy>Row one is reserved for RING. Everything beneath tracks the tokens drawing the heaviest boosts on Solana, refreshed each minute for as long as you stay here.</p>
+  <p class="err" id="board-err" role="status" hidden></p>
+  <div class="cols" aria-hidden="true"><span>#</span><span>Token</span><span>Price</span><span>24h</span><span>Volume</span><span>Liquidity</span></div>
+  <div class="rows" id="rows"></div>
+</section>
+
+<section id="loop" class="sec">
+  <h2 class="h2" data-reveal>The loop</h2>
+  <div class="cards" data-stagger>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">01</span><h3>Debut</h3><p data-copy>Name it, shape its curve, and send it onto Solana in one sitting.</p></article>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">02</span><h3>Fill the stream</h3><p data-copy>Trading activity feeds a reward stream instead of vanishing into fees.</p></article>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">03</span><h3>Reach holders</h3><p data-copy>The stream flows to wallets that keep their coins, sized by what they keep.</p></article>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">04</span><h3>Stay readable</h3><p data-copy>Addresses, links and figures come from one record, never from guesswork.</p></article>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">05</span><h3>Watch the tape</h3><p data-copy>A live ticker shows which Solana tokens the crowd is boosting at this moment.</p></article>
+    <article class="card" data-spot data-reveal><img class="cghost" src="./assets/ring-256.png" alt="" loading="lazy" width="170" height="170"><span class="n">06</span><h3>Hold the ring</h3><p data-copy>Closing the circle means the people who stay are the ones who gain.</p></article>
+  </div>
+</section>
+
+<section id="roadmap" class="sec">
+  <h2 class="h2" data-reveal>Roadmap</h2>
+  <ol class="phases" data-stagger>
+    <li class="phase" data-spot data-reveal><span class="n">Phase 1</span><h3>Ignite</h3><p data-copy>Site, live desk, contract announcement, first community.</p></li>
+    <li class="phase" data-spot data-reveal><span class="n">Phase 2</span><h3>Forge</h3><p data-copy>Creation flow, holder reward stream, open test runs.</p></li>
+    <li class="phase" data-spot data-reveal><span class="n">Phase 3</span><h3>Widen</h3><p data-copy>Creator tools, reward options, deeper analytics.</p></li>
+    <li class="phase" data-spot data-reveal><span class="n">Phase 4</span><h3>Close the ring</h3><p data-copy>Governance hooks, audits, open-source release.</p></li>
+  </ol>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-row">
+    <span class="foot-name">Ringlaunch</span>
+    <nav class="foot-nav" aria-label="Footer"><a data-social="x">X</a><a data-social="github">GitHub</a></nav>
+  </div>
+  <p class="risk" data-copy>Tokens can drop to zero. Ringlaunch shares information, not recommendations. Use your own judgement and never risk money you cannot afford to lose.</p>
+</footer>
+</div>
+
+<nav class="bnav" aria-label="Quick">
+  <a href="#top" aria-label="Overview"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></a>
+  <a href="#market" aria-label="Market desk"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></a>
+  <a href="#loop" aria-label="The loop"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></a>
+  <a href="#roadmap" aria-label="Roadmap"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></a>
+</nav>
+</div>
+</body>
+</html>

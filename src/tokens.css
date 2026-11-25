@@ -1,0 +1,36 @@
+/* ONE tokens file: the only place colour literals may live.
+   Provenance (sampled from brand/ + reference/ pixels, none invented):
+   --navy   #0d2b6b  mode colour of brand/LOGO RING PNG.png (3,734,498 px of 4,000,000)
+   --white  #fcfcfc  mode opaque rope colour, both brand PNGs
+   --ink    #000002  mode colour of reference/RING 1 top band (9,002 px)
+   --cyan   #00b9ff  mode colour of reference/RING 1 headline text (728 px)
+   --glow   #54a3ff  glow-band sample, reference/RING 1 y 640-730
+   --glow-2 #a1d4ff  brightest glow-band sample, same region
+   Every other shade is derived with color-mix() from these six. */
+:root {
+  --navy: #0d2b6b;
+  --white: #fcfcfc;
+  --ink: #000002;
+  --cyan: #00b9ff;
+  --glow: #54a3ff;
+  --glow-2: #a1d4ff;
+
+  --color-accent: var(--cyan);
+  --bg: var(--ink);
+  --panel: color-mix(in srgb, var(--navy) 22%, var(--ink));
+  --panel-2: color-mix(in srgb, var(--navy) 40%, var(--ink));
+  --line: color-mix(in srgb, var(--navy) 55%, var(--ink));
+  --line-2: color-mix(in srgb, var(--glow) 28%, var(--navy));
+  --text: var(--white);
+  --muted: color-mix(in srgb, var(--white) 62%, var(--navy));
+  --dim: color-mix(in srgb, var(--white) 38%, var(--navy));
+  --up: var(--cyan);
+  --down: color-mix(in srgb, var(--white) 48%, var(--navy));
+  --flash: color-mix(in srgb, var(--cyan) 22%, transparent);
+  --shadow: color-mix(in srgb, var(--ink) 70%, transparent);
+
+  /* geometry copied from the studied reference (Tailwind v4 scale, 4px unit) */
+  --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px; --r-3xl: 24px;
+  --sidebar-w: 220px; --header-h: 64px; --page-max: 1320px;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
